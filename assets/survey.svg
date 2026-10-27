@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 150">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e3edff"/><stop offset="1" stop-color="#c7dafc"/></linearGradient></defs>
+  <rect width="400" height="150" fill="url(#bg)"/>
+  <circle cx="370" cy="20" r="60" fill="#fff" opacity=".35"/><circle cx="30" cy="140" r="50" fill="#fff" opacity=".35"/>
+  <!-- 窓と床 -->
+  <rect x="0" y="118" width="400" height="32" fill="#b9cdf0"/>
+  <rect x="236" y="22" width="130" height="70" rx="6" fill="#fff" opacity=".8"/><path d="M301 22 v70 M236 57 h130" stroke="#c7dafc" stroke-width="4"/>
+  <!-- デスクとディスプレイ -->
+  <rect x="40" y="88" width="150" height="10" rx="3" fill="#8a6a4a"/>
+  <rect x="48" y="98" width="8" height="24" fill="#6b4a32"/><rect x="174" y="98" width="8" height="24" fill="#6b4a32"/>
+  <rect x="72" y="40" width="86" height="50" rx="5" fill="#1e3a6e"/><rect x="77" y="45" width="76" height="38" fill="#5b8fe8"/>
+  <path d="M84 72 l14 -12 12 8 16 -16 18 12" stroke="#fff" stroke-width="3" fill="none" opacity=".85"/>
+  <rect x="110" y="88" width="10" height="4" fill="#1e3a6e"/>
+  <!-- 会議ブース -->
+  <rect x="246" y="52" width="72" height="68" rx="8" fill="#1e4fa8"/><rect x="254" y="60" width="56" height="44" rx="5" fill="#a9c6f7"/>
+  <circle cx="282" cy="78" r="8" fill="#ffd8b0"/><path d="M270 104 q12 -16 24 0z" fill="#ffffff"/><path d="M272 76 q10 -14 20 0" stroke="#1e3a6e" stroke-width="3" fill="none"/>
+  <!-- 観葉植物 -->
+  <rect x="338" y="96" width="24" height="24" rx="4" fill="#e07b4f"/><path d="M350 96 q-16 -20 -4 -34 M350 96 q14 -24 4 -38 M350 96 q2 -20 14 -26" stroke="#2e8b57" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- 吹き出し -->
+  <g transform="translate(180 10)"><rect x="0" y="0" width="58" height="40" rx="12" fill="#fff"/><path d="M14 40 l-6 12 16 -12z" fill="#fff"/><text x="29" y="29" font-size="24" font-weight="900" text-anchor="middle" fill="#1e4fa8" font-family="'Hiragino Sans',sans-serif">？</text></g>
+</svg>
