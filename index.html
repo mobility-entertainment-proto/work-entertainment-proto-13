@@ -123,9 +123,13 @@
   .row .val { text-align: right; font-variant-numeric: tabular-nums; color: var(--text); }
   .row .val small { color: var(--muted); margin-left: 3px; }
   .row .me { font-size: 10px; font-weight: 800; color: #fff; background: var(--primary); border-radius: 999px; padding: 0 6px; }
-  .row:hover .track, .row:focus-visible .track { outline: 2px solid #c7d6ef; outline-offset: 2px; }
-  .tip { position: absolute; left: 24px; top: -30px; background: #1d2233; color: #fff; font-size: 12px; border-radius: 6px; padding: 3px 8px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .15s; z-index: 2; }
-  .row:hover .tip, .row:focus-visible .tip { opacity: 1; }
+  /* 触れたときの説明はマウス操作のときだけ（スマホでは押した位置に残ってしまうため出さない） */
+  .tip { display: none; }
+  @media (hover: hover) and (pointer: fine) {
+    .tip { display: block; position: absolute; left: 24px; top: -30px; background: #1d2233; color: #fff; font-size: 12px; border-radius: 6px; padding: 3px 8px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .15s; z-index: 2; }
+    .bars.armed .row:hover .tip { opacity: 1; }
+    .bars.armed .row:hover .track { outline: 2px solid #c7d6ef; outline-offset: 2px; }
+  }
   .demo-note { font-size: 11px; color: #b0571a; background: #fff4e5; border-radius: 6px; padding: 4px 8px; margin: 12px 0 0; }
   .after { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; font-size: 12px; color: var(--muted); }
   .after button { background: none; border: 0; color: var(--primary); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; padding: 4px 0; }
@@ -326,6 +330,9 @@
     const mineRow = $('surveyBody').querySelector('.row.mine .lbl');
     if (mineRow) mineRow.insertAdjacentHTML('beforeend', '<span class="me">あなた</span>');
     requestAnimationFrame(() => $('surveyBody').querySelectorAll('.bar').forEach(b => { b.style.width = `${b.dataset.w}%`; }));
+    // ボタンを押した位置にマウスが残っていても説明が出ないよう、マウスが動いてから有効にする
+    const bars = $('surveyBody').querySelector('.bars');
+    bars.addEventListener('mousemove', () => bars.classList.add('armed'), { once: true });
     $('btnChange').addEventListener('click', renderQuestion);   // 前の回答を選んだ状態で質問に戻る
   }
 
