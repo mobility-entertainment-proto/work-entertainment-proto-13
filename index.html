@@ -266,6 +266,7 @@
   function fetchResults() { return Promise.resolve({ ...DEMO_COUNTS }); }
   function submitVote(id) { try { localStorage.setItem(VOTE_KEY, id); } catch {} return Promise.resolve(); }
   function myVote() { try { return localStorage.getItem(VOTE_KEY); } catch { return null; } }
+  function clearVote() { try { localStorage.removeItem(VOTE_KEY); } catch {} }
 
   function renderDeadline() {
     const today = new Date(); today.setHours(0, 0, 0, 0);
@@ -328,9 +329,11 @@
     $('btnChange').addEventListener('click', renderQuestion);   // 前の回答を選んだ状態で質問に戻る
   }
 
+  // 在席・退席のたびに、まっさらな質問から始める
   function startSurvey() {
     renderDeadline();
-    if (myVote()) renderResults(false); else renderQuestion();
+    clearVote();
+    renderQuestion();
   }
 
   function register(kind) {
@@ -346,6 +349,7 @@
   $('btnIn').addEventListener('click', () => register('在席'));
   $('btnOut').addEventListener('click', () => register('退席'));
   $('btnBack').addEventListener('click', () => {
+    clearVote();   // 登録画面に戻ったら回答をリセット
     $('datetime').value = nowLocal();
     show('screen-form');
   });
